@@ -1,3 +1,6 @@
+using Infrastructure.Application;
+using Infrastructure.Application.Repository;
+using Infrastructure.Application.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using StorageService.Infrastructure.Data;
 
@@ -8,6 +11,8 @@ builder.Services.AddDbContext<StorageServiceDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
 });
 
+builder.Services.AddScoped<IAdvertisementRepository, AdvertisementRepository>();
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 // Add services to the container.
 
 builder.Services.AddControllers();
