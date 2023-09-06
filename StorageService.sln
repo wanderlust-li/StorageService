@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageService.API", "StorageService.API\StorageService.API.csproj", "{840B6069-C002-4251-866A-55F6A2C9F5BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{840B6069-C002-4251-866A-55F6A2C9F5BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{840B6069-C002-4251-866A-55F6A2C9F5BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{840B6069-C002-4251-866A-55F6A2C9F5BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{840B6069-C002-4251-866A-55F6A2C9F5BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
