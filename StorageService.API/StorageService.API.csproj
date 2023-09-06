@@ -23,10 +23,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\StorageService.Infrastructure\StorageService.Infrastructure.csproj" />
     </ItemGroup>
 
