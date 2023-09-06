@@ -1,4 +1,14 @@
+
+
+using Microsoft.EntityFrameworkCore;
+using StorageService.Infrastructure.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<StorageServiceDbContext>(option =>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
+});
 
 // Add services to the container.
 

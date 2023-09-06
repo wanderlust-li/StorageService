@@ -13,11 +13,11 @@ public class Advertisement
     [MaxLength(1000)]
     public string Description { get; set; }
     
-    [MaxLength(3)]
-    public string[] ImageUrls { get; set; }
+    [MaxLength(255)]
+    public string ImageUrl { get; set; }
     
     [Required]
     public decimal Price { get; set; }
     
-    public DateTime DateCreated { get; set; } = DateTime.UtcNow; 
+    public DateTime DateCreated { get; set; } = DateTime.Now; 
 }
