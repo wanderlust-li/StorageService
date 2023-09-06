@@ -1,5 +1,3 @@
-
-
 using Microsoft.EntityFrameworkCore;
 using StorageService.Infrastructure.Data;
 
