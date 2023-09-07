@@ -92,10 +92,6 @@ public class AdvertisementController : Controller
         return _response;
     }
 
-    
-    
-    
-
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
