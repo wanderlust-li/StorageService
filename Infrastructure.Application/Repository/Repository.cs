@@ -28,11 +28,10 @@ public class Repository<T> : IRepository<T> where T : class
             {
                 pageSize = 10;
             }
+            
             query = query.Skip(pageSize * (pageNumber - 1)).Take(pageSize);
         }
         
-        
-
         return await query.ToListAsync();
     }
 

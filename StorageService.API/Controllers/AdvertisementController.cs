@@ -60,5 +60,41 @@ public class AdvertisementController : Controller
         }
         return _response;
     }
-    
+
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<ActionResult<APIResponse>> CreateAdvertisement([FromBody] CreateAdvertisementDTO createDto)
+    {
+        try
+        {
+            if (await _db.GetAsync(u => u.Title.ToLower() == createDto.Title.ToLower()) != null)
+            {
+                ModelState.AddModelError("ErrorMessages", "Advertisement already Exists!");
+                return BadRequest(ModelState);
+            }
+
+            if (createDto == null)
+            {
+                return BadRequest(createDto);
+            }
+
+            Advertisement advertisement = _mapper.Map<Advertisement>(createDto);
+
+            await _db.CreateAsync(advertisement);
+
+            _response.Result = _mapper.Map<CreateAdvertisementDTO>(advertisement);
+            _response.StatusCode = HttpStatusCode.Created;
+
+            return CreatedAtRoute("GetAdvertisement", new { id = advertisement.Id }, _response);
+        }
+        catch (Exception ex)
+        {
+            _response.IsSuccess = false;
+            _response.ErrorMessages = new List<string>() { ex.ToString() };
+        }
+
+        return _response;
+    }
 }

@@ -11,5 +11,7 @@ public class MappingConfig : Profile
         CreateMap<Advertisement, AdvertisementDTO>();
         CreateMap<AdvertisementDTO, Advertisement>();
         
+        CreateMap<Advertisement, CreateAdvertisementDTO>().ReverseMap();
+        
     }
 }
