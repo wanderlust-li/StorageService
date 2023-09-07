@@ -17,7 +17,7 @@ public class GetAllRepository : IGetAllRepository
 
 
     public async Task<List<Advertisement>> GetAllAsync(Expression<Func<Advertisement, bool>>? filter = null, 
-        int pageSize = 0, int pageNumber = 1, string? sortBy = null)
+        int pageSize = 10, int pageNumber = 1, string? sortBy = null)
     {
         IQueryable<Advertisement> query = _db.Advertisements;
 

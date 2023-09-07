@@ -31,15 +31,30 @@ public class AdvertisementController : Controller
     
     
     [HttpGet]
-    [ResponseCache(CacheProfileName = "Default30")]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<APIResponse>> GetAdvertisements([FromQuery] int pageNumber = 1,
-        [FromQuery] int pageSize = 1,
+        [FromQuery] int pageSize = 10,
         [FromQuery] string? sortBy = null)
     {
-        
+        try
+        {
+            var advertisements = await _allRepository.GetAllAsync(null, pageSize, pageNumber, sortBy);
+            // var result = _mapper.Map<List<AdvertisementDTO>>(advertisements);
+
+            _response.Result = _mapper.Map<List<AdvertisementDTO>>(advertisements);
+            _response.StatusCode = HttpStatusCode.OK;
+            return Ok(_response);
+        }
+        catch (Exception ex)
+        {
+            _response.IsSuccess = false;
+            _response.ErrorMessages = new List<string>() { ex.ToString() };
+        }
+
+        return _response;
+ 
     }
 
     [HttpGet("{id:int}", Name = "GetAdvertisement")]
