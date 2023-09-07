@@ -1,6 +1,6 @@
 ﻿using StorageService.Domain.Entities;
 
-namespace Infrastructure.Application.Repository.IRepository;
+namespace StorageService.Application.Repository.IRepository;
 
 public interface IAdvertisementRepository: IRepository<Advertisement>
 {

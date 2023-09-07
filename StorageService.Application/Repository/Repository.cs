@@ -1,9 +1,10 @@
 ﻿using System.Linq.Expressions;
-using Infrastructure.Application.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
+using StorageService.Application.Repository.IRepository;
+using StorageService.Domain.Entities;
 using StorageService.Infrastructure.Data;
 
-namespace Infrastructure.Application.Repository;
+namespace StorageService.Application.Repository;
 
 public class Repository<T> : IRepository<T> where T : class
 {
@@ -16,23 +17,10 @@ public class Repository<T> : IRepository<T> where T : class
         this.dbSet = _db.Set<T>();
     }
 
-    public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null, int pageSize = 0, int pageNumber = 1)
+    public async Task<List<Advertisement>> GetAllAsync(Expression<Func<Advertisement, bool>>? filter = null, int pageSize = 0, int pageNumber = 1,
+        string? sortBy = null);
     {
-        IQueryable<T> query = dbSet;
-
-        if (filter != null)
-            query = query.Where(filter);
-        if (pageSize > 0)
-        {
-            if (pageSize > 10)
-            {
-                pageSize = 10;
-            }
-            
-            query = query.Skip(pageSize * (pageNumber - 1)).Take(pageSize);
-        }
         
-        return await query.ToListAsync();
     }
 
     public async Task<T> GetAsync(Expression<Func<T, bool>> filter = null, bool tracked = true)

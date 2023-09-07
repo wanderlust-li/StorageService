@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Infrastructure.Application.DTO;
+using StorageService.Application.DTO;
 using StorageService.Domain.Entities;
 
-namespace Infrastructure.Application;
+namespace StorageService.Application;
 
 public class MappingConfig : Profile
 {

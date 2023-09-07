@@ -1,8 +1,8 @@
-﻿using Infrastructure.Application.Repository.IRepository;
+﻿using StorageService.Application.Repository.IRepository;
 using StorageService.Domain.Entities;
 using StorageService.Infrastructure.Data;
 
-namespace Infrastructure.Application.Repository;
+namespace StorageService.Application.Repository;
 
 public class AdvertisementRepository : Repository<Advertisement>, IAdvertisementRepository
 {

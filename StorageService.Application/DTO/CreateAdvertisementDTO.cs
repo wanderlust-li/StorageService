@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Infrastructure.Application.DTO;
+namespace StorageService.Application.DTO;
 
 public class CreateAdvertisementDTO
 {

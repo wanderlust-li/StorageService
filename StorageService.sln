@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageService.Domain", "St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageService.Infrastructure", "StorageService.Infrastructure\StorageService.Infrastructure.csproj", "{CD624C5B-F41B-4187-B91C-D55550355308}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Application", "Infrastructure.Application\Infrastructure.Application.csproj", "{B5AFB969-1396-4D69-9794-CC51B2286FD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageService.Application", "StorageService.Application\StorageService.Application.csproj", "{B5AFB969-1396-4D69-9794-CC51B2286FD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

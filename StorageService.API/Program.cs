@@ -1,6 +1,6 @@
-using Infrastructure.Application;
-using Infrastructure.Application.Repository;
-using Infrastructure.Application.Repository.IRepository;
+using StorageService.Application;
+using StorageService.Application.Repository;
+using StorageService.Application.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using StorageService.Infrastructure.Data;
 

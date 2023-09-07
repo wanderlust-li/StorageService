@@ -1,10 +1,12 @@
 ﻿using System.Linq.Expressions;
+using StorageService.Domain.Entities;
 
-namespace Infrastructure.Application.Repository.IRepository;
+namespace StorageService.Application.Repository.IRepository;
 
 public interface IRepository<T> where T: class
 {
-    Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null, int pageSize = 0, int pageNumber = 1);
+    Task<List<Advertisement>> GetAllAsync(Expression<Func<Advertisement, bool>>? filter = null, int pageSize = 0, 
+        int pageNumber = 1, string? sortBy = null);
     
     Task<T> GetAsync(Expression<Func<T, bool>> filter = null, bool tracked = true);
     

@@ -1,7 +1,8 @@
 ﻿using System.Net;
+using System.Text.Json;
 using AutoMapper;
-using Infrastructure.Application.DTO;
-using Infrastructure.Application.Repository.IRepository;
+using StorageService.Application.DTO;
+using StorageService.Application.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using StorageService.Domain.Entities;
 
@@ -60,6 +61,18 @@ public class AdvertisementController : Controller
         }
         return _response;
     }
+
+    // [HttpGet]
+    // [ResponseCache(CacheProfileName = "Default30")]
+    // [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    // [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    // [ProducesResponseType(StatusCodes.Status200OK)]
+    // public async Task<ActionResult<APIResponse>> GetAdvertisements()
+    // {
+    //     
+    // }
+    
+    
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
