@@ -17,11 +17,17 @@ public class Repository<T> : IRepository<T> where T : class
         this.dbSet = _db.Set<T>();
     }
 
-    public async Task<List<Advertisement>> GetAllAsync(Expression<Func<Advertisement, bool>>? filter = null, int pageSize = 0, int pageNumber = 1,
-        string? sortBy = null);
-    {
-        
-    }
+    // Метод получения списка объявлений
+    // ● Пагинация: на одной странице должно присутствовать 10 объявлений;
+    // ● Cортировки: по цене (возрастание/убывание) и по дате создания
+    //     (возрастание/убывание);
+    
+    // public async Task<List<Advertisement>> GetAllAsync(Expression<Func<Advertisement, bool>>? filter = null, 
+    //     int pageSize = 0, int pageNumber = 1, string? sortBy = null);
+    //
+    // {
+    //     
+    // }
 
     public async Task<T> GetAsync(Expression<Func<T, bool>> filter = null, bool tracked = true)
     {

@@ -12,6 +12,7 @@ builder.Services.AddDbContext<StorageServiceDbContext>(option =>
 });
 
 builder.Services.AddScoped<IAdvertisementRepository, AdvertisementRepository>();
+builder.Services.AddScoped<IGetAllRepository, GetAllRepository>();
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 // Add services to the container.
 

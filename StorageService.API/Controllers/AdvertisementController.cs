@@ -14,17 +14,32 @@ namespace StorageService.API.Controllers;
 public class AdvertisementController : Controller
 {
     private readonly IAdvertisementRepository _db;
+    private readonly IGetAllRepository _allRepository;
     private readonly ILogger<AdvertisementController> _logger;
     private readonly IMapper _mapper;
     private readonly APIResponse _response;
 
     public AdvertisementController(IAdvertisementRepository db, ILogger<AdvertisementController> logger, 
-        IMapper mapper)
+        IMapper mapper, IGetAllRepository allRepository)
     {
         _db = db;
         _logger = logger;
         _mapper = mapper;
+        _allRepository = allRepository;
         this._response = new();
+    }
+    
+    
+    [HttpGet]
+    [ResponseCache(CacheProfileName = "Default30")]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<APIResponse>> GetAdvertisements([FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 1,
+        [FromQuery] string? sortBy = null)
+    {
+        
     }
 
     [HttpGet("{id:int}", Name = "GetAdvertisement")]
@@ -62,15 +77,7 @@ public class AdvertisementController : Controller
         return _response;
     }
 
-    // [HttpGet]
-    // [ResponseCache(CacheProfileName = "Default30")]
-    // [ProducesResponseType(StatusCodes.Status403Forbidden)]
-    // [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    // [ProducesResponseType(StatusCodes.Status200OK)]
-    // public async Task<ActionResult<APIResponse>> GetAdvertisements()
-    // {
-    //     
-    // }
+    
     
     
 
