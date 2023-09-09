@@ -4,6 +4,8 @@ namespace StorageService.Application.DTO;
 
 public class AdvertisementDTO
 {
+    public int Id { get; set; }
+    
     [Required]
     [MaxLength(200)]
     public string Title { get; set; }

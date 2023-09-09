@@ -43,7 +43,7 @@ public class GetAllRepository : IGetAllRepository
                 query = query.OrderByDescending(a => a.DateCreated);
                 break;
         }
-        
+
         var skipAmount = pageSize * (pageNumber - 1);
         query = query.Skip(skipAmount).Take(pageSize);
 
