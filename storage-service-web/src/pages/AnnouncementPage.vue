@@ -1,17 +1,23 @@
 ﻿<template>
-    <div v-if="announcement">
-        <div class="announcement-full">
-            <div class="announcement-image">
-                <img :src="announcement.imageUrl" alt="Announcement Image" />
+    <div v-if="announcement" class="page-container">
+        <div class="content-wrapper">
+            <div class="announcement-full">
+                <div class="announcement-image">
+                    <img :src="announcement.imageUrl" alt="Announcement Image" />
+                </div>
+                <div class="announcement-details">
+                    <h2>{{ announcement.title }}</h2>
+                    <p class="description">{{ announcement.description }}</p>
+                    <p class="price">{{ announcement.price }} грн</p>
+                </div>
             </div>
-            <div class="announcement-details">
-                <h2>{{ announcement.title }}</h2>
-                <p class="description">{{ announcement.description }}</p>
-                <p class="price">{{ announcement.price }} грн</p>
+            <div class="button-wrapper">
+                <button @click="goToHomePage" class="home-button">Повернутись на Головну</button>
             </div>
         </div>
     </div>
 </template>
+
 
 <script>
 import axios from 'axios'
@@ -23,8 +29,13 @@ export default {
             announcement: null
         };
     },
+    methods: {
+        goToHomePage() {
+            this.$router.push({ name: 'HomePage' });
+        }
+    },
     async created() {
-        const id = this.$route.params.id; 
+        const id = this.$route.params.id;
         const response = await axios.get(`https://localhost:44315/api/Advertisement/${id}`);
         this.announcement = response.data.result;
     }
@@ -32,13 +43,35 @@ export default {
 </script>
 
 <style scoped>
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #2b2b2b;
+    color: #f5f5f5;
+}
+
+.content-wrapper {
+    width: 80%;
+    max-width: 1200px;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .announcement-full {
     display: flex;
-    border: 1px solid #e0e0e0;
+    border: 2px solid #e89e9e;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    background-color: #fff;
+    background-color: #3a3a3a;
     margin: 20px 0;
     transition: box-shadow 0.3s ease;
 }
@@ -49,7 +82,7 @@ export default {
 
 .announcement-image {
     flex: 1;
-    border-right: 1px solid #e0e0e0;
+    border-right: 1px solid #e89e9e;
     padding-right: 20px;
     margin-right: 20px;
 }
@@ -70,21 +103,39 @@ export default {
 h2 {
     font-size: 2rem;
     margin: 0 0 15px 0;
-    color: #333;
+    color: #e89e9e;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .description {
     font-size: 1rem;
-    color: #666;
+    color: #ddd;
     margin-bottom: 10px;
     line-height: 1.5;
 }
 
 .price {
     font-size: 1.6rem;
-    color: #2E8B57; /* Seagreen color for a fresh look */
+    color: #f3b6b6;
     font-weight: bold;
-    margin-top: auto; /* push it to the bottom if there's extra space */
+    margin-top: auto;
+}
+
+.home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e89e9e;
+    color: #f5f5f5;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.home-button:hover {
+    background-color: #d58686;
 }
 
 @media (max-width: 768px) {

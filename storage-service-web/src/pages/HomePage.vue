@@ -41,29 +41,43 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2b2b2b;
+    color: #f5f5f5;
+}
+
 .announcement-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    margin: 20px;
 }
 
 .announcement-item {
-    border: 1px solid #ddd;
+    border: 2px solid #e89e9e;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
     flex: 1;
     min-width: 300px;
+    background-color: #3a3a3a;
 }
 
 .announcement-item:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .announcement-image img {
     max-width: 100%;
-    height: auto;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+.announcement-image img:hover {
+    transform: scale(1.02);
 }
 
 .announcement-details {
@@ -71,20 +85,22 @@ onMounted(async () => {
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    color: #e89e9e;
     margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .description {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 0;
+    font-size: 1rem;
+    color: #ddd;
+    margin: 5px 0;
 }
 
 .price {
-    font-size: 1rem;
-    color: #333;
-    margin: 0;
+    font-size: 1.2rem;
+    color: #f3b6b6;
+    margin: 5px 0;
     font-weight: bold;
 }
 
@@ -96,17 +112,19 @@ h2 {
 }
 
 .create-button {
-    padding: 10px 20px;
-    background-color: #42b983;
+    padding: 10px 25px;
+    background-color: #e89e9e;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.2s;
+    font-size: 1.1rem;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 .create-button:hover {
-    background-color: #319c75;
+    background-color: #d58686;
+    transform: scale(1.05);
 }
 </style>
+

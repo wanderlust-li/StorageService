@@ -40,7 +40,7 @@ public class GetAllRepository : IGetAllRepository
                 query = query.OrderByDescending(a => a.DateCreated);
                 break;
             default:
-                query = query.OrderByDescending(a => a.DateCreated);
+                query = query.OrderBy(a => a.DateCreated);
                 break;
         }
 
