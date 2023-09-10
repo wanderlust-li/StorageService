@@ -1,5 +1,16 @@
 ﻿<template>
     <div>
+        <div class="sorting-options">
+            <label for="sortOptions">Сортувати за:</label>
+            <select id="sortOptions" v-model="selectedSortOption">
+                <option value="priceAsc">Ціна (за зростанням)</option>
+                <option value="priceDesc">Ціна (за спаданням)</option>
+                <option value="dateCreatedAsc">Дата створення (за зростанням)</option>
+                <option value="dateCreatedDesc">Дата створення (за спаданням)</option>
+            </select>
+            <button @click="fetchAdvertisements">Застосувати</button>
+        </div>
+
         <div class="announcement-list">
             <div v-for="item in items" :key="item.id" @click="openAnnouncement(item.id)" class="announcement-item">
                 <div class="announcement-image">
@@ -24,6 +35,16 @@ import { onMounted, ref } from 'vue'
 import router from '../routes/index'
 
 const items = ref([])
+
+let selectedSortOption = ref('priceAsc');
+
+const fetchAdvertisements = async () => {
+    const response = await axios.get(`https://localhost:44315/api/Advertisement?pageNumber=1&pageSize=10&sortBy=${selectedSortOption.value}`);
+    items.value = response.data.result;
+    console.log(response);
+}
+
+onMounted(fetchAdvertisements);
 
 const openAnnouncement = (id) => {
     router.push(`/announcement/${id}`)
@@ -126,5 +147,43 @@ h2 {
     background-color: #d58686;
     transform: scale(1.05);
 }
+
+
+.sorting-options {
+    display: flex;
+    justify-content: center; /* Add this line to center horizontally */
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0; /* Adjust margin for better spacing */
+    padding: 15px; /* Add padding for a more spaced appearance */
+    border-radius: 5px; /* Round corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Add a subtle shadow for depth */
+    background-color: #3a3a3a; /* Slightly different background for differentiation */
+}
+
+.sorting-options label {
+    font-weight: bold; /* Make the label bold */
+    font-size: 1.1rem; /* Slightly bigger font size */
+}
+
+.sorting-options select, .sorting-options button {
+    padding: 6px 12px; /* Increase padding for a better look */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #e89e9e;
+    color: white;
+    font-size: 1rem;
+    transition: background-color 0.3s; /* Add a transition for smooth color change */
+}
+
+.sorting-options button:hover {
+    background-color: #d58686;
+}
+
+.sorting-options select:hover, .sorting-options select:focus {
+    background-color: #d58686;
+}
+
 </style>
 
