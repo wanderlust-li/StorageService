@@ -30,8 +30,6 @@ const openAnnouncement = (id) => {
 }
 
 const createNewAnnouncement = () => {
-    // Додайте код для створення нового оголошення тут
-    // Наприклад, перенаправлення на сторінку створення оголошення
     router.push('/create-announcement')
 }
 
