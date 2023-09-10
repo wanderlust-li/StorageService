@@ -17,15 +17,20 @@ public class GetAllRepository : IGetAllRepository
 
 
     public async Task<List<Advertisement>> GetAllAsync(Expression<Func<Advertisement, bool>>? filter = null, 
-        int pageSize = 10, int pageNumber = 1, string? sortBy = null)
+        Pagination pagination = null)
     {
         IQueryable<Advertisement> query = _db.Advertisements;
 
+        if (pagination == null)
+        {
+            pagination = new Pagination(); // Defaults to 10 items per page, and sortBy dateCreatedAsc
+        }
+        
         if (filter != null)
         {
             query = query.Where(filter);
         }
-        switch (sortBy)
+        switch (pagination.SortBy)
         {
             case "priceAsc":
                 query = query.OrderBy(a => a.Price);
@@ -44,8 +49,8 @@ public class GetAllRepository : IGetAllRepository
                 break;
         }
 
-        var skipAmount = pageSize * (pageNumber - 1);
-        query = query.Skip(skipAmount).Take(pageSize);
+        var skipAmount = pagination.PageSize * (pagination.PageNumber - 1);
+        query = query.Skip(skipAmount).Take(pagination.PageSize);
 
         return await query.ToListAsync();
         

@@ -34,13 +34,11 @@ public class AdvertisementController : Controller
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<APIResponse>> GetAdvertisements([FromQuery] int pageNumber = 1,
-        [FromQuery] int pageSize = 10,
-        [FromQuery] string? sortBy = null)
+    public async Task<ActionResult<APIResponse>> GetAdvertisements([FromQuery] Pagination pagination)
     {
         try
         {
-            var advertisements = await _allRepository.GetAllAsync(null, pageSize, pageNumber, sortBy);
+            var advertisements = await _allRepository.GetAllAsync(null, pagination);
             // var result = _mapper.Map<List<AdvertisementDTO>>(advertisements);
 
             _response.Result = _mapper.Map<List<AdvertisementDTO>>(advertisements);
