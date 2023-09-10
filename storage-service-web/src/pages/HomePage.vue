@@ -151,30 +151,30 @@ h2 {
 
 .sorting-options {
     display: flex;
-    justify-content: center; /* Add this line to center horizontally */
+    justify-content: center; 
     align-items: center;
     gap: 15px;
-    margin: 20px 0; /* Adjust margin for better spacing */
-    padding: 15px; /* Add padding for a more spaced appearance */
-    border-radius: 5px; /* Round corners */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Add a subtle shadow for depth */
-    background-color: #3a3a3a; /* Slightly different background for differentiation */
+    margin: 20px 0; 
+    padding: 15px; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    background-color: #3a3a3a; 
 }
 
 .sorting-options label {
-    font-weight: bold; /* Make the label bold */
-    font-size: 1.1rem; /* Slightly bigger font size */
+    font-weight: bold; 
+    font-size: 1.1rem;
 }
 
 .sorting-options select, .sorting-options button {
-    padding: 6px 12px; /* Increase padding for a better look */
+    padding: 6px 12px; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
     background-color: #e89e9e;
     color: white;
     font-size: 1rem;
-    transition: background-color 0.3s; /* Add a transition for smooth color change */
+    transition: background-color 0.3s; 
 }
 
 .sorting-options button:hover {
